@@ -4,11 +4,22 @@
 
 int putc(unsigned char c)
 {
-	return 0;
+	if('\n'== c)
+	{
+		serial_send_byte(SERIAL_DEFAULT_DEVICE , '\r');
+	}
+	else
+	{}
+	return serial_send_byte(SERIAL_DEFAULT_DEVICE,c);
+
 }
 
 int puts(unsigned char *str)
 {
+	while(*str)
+	{
+		putc(*(str++));
+	}
 	return 0;
 }
 
