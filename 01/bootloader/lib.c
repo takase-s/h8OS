@@ -9,7 +9,8 @@ int putc(unsigned char c)
 		serial_send_byte(SERIAL_DEFAULT_DEVICE , '\r');
 	}
 	else
-	{}
+	{
+	}
 	return serial_send_byte(SERIAL_DEFAULT_DEVICE,c);
 
 }

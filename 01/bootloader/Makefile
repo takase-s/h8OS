@@ -15,6 +15,8 @@ STRIP = $(BINDIR)/$(ADDNAME)strip
 
 H8WRITE = ../../tools/h8write/kz_h8write
 
+# FreeBSD-4.x:/dev/cuaaX, FreeBSD-6.x:/dev/cuadX, FreeBSD(USB):/dev/cuaUx
+# Linux:/dev/ttySx, Linux(USB):/dev/ttyUSBx, Windows:comX
 H8WRITE_SERDEV = /dev/ttyS0
 OBJS = vector.o startup.o main.o
 OBJS += lib.o serial.o
@@ -22,7 +24,9 @@ OBJS += lib.o serial.o
 TARGET = kzload
 
 CFLAGS = -Wall   -mh -nostdinc  -nostdlib -fno-builtin
+#CFLAGS += -mint32 # intÇ32ÉrÉbÉgÇ…Ç∑ÇÈÇ∆ä|éZÅ^äÑéZÇ™Ç≈Ç´Ç»Ç≠Ç»ÇÈ
 CFLAGS +=  -I.
+#CFLAGS += -g
 CFLAGS += -Os
 CFLAGS += -DKZLOAD
 
@@ -34,11 +38,10 @@ LFLAGS = -static -T ld.scr -L.
 all:  $(TARGET)
 
 $(TARGET) : $(OBJS)
-
-$(TARGET) : 	$(OBJS)
 		$(CC) $(OBJS) -o $(TARGET) $(CFLAGS) $(LFLAGS)
 		cp $(TARGET) $(TARGET).elf
 		$(STRIP) $(TARGET)
+
 .c.o : 		$<
 		$(CC) -c  $(CFLAGS)  $<
 
@@ -55,4 +58,3 @@ write :		$(TARGET).mot
 
 clean :
 		rm -f $(OBJS) $(TARGET) $(TARGET).elf $(TARGET).mot
-
