@@ -72,12 +72,12 @@ int strncmp(const char *s1, const char *s2, int len)
   return 0;
 }
 
-/* ‚P•¶š‘—M */
+/* ï¼‘æ–‡å­—é€ä¿¡ */
 int putc(char c)
 {
-	if('\n'== c)
+	if('Â¥n'== c)
 	{
-		serial_send_byte(SERIAL_DEFAULT_DEVICE , '\r');
+		serial_send_byte(SERIAL_DEFAULT_DEVICE , 'Â¥r');
 	}
 	else
 	{
@@ -95,14 +95,14 @@ int puts(char *str)
 	return 0;
 }
 
-/* ”’l‚Ì16i•\¦ */
+/* æ•°å€¤ã®16é€²è¡¨ç¤º */
 int putxval(unsigned long value, int column)
 {
   char buf[9];
   char *p;
 
   p = buf + sizeof(buf) - 1;
-  *(p--) = '\0';
+  *(p--) = 'Â¥0';
 
   if (!value && !column)
     column++;

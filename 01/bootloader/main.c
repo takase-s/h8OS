@@ -38,11 +38,16 @@ static void printval(void)
 
 int main(void)
 {
-	serial_init(SERIAL_DEFAULT_DEVICE);
+  init();
+  puts("Hello World!\n");
 
-	puts( "Hello World!\n" );
-  	putxval(0x10, 0);   puts("\n");
-  	putxval(0xffff, 0); puts("\n");	
+  printval();
+  puts("overwrite variables.\n");
+  global_data = 0x20;
+  global_bss  = 0x30;
+  static_data = 0x40;
+  static_bss  = 0x50;
+  printval();
 
 	while(1)
 	{

@@ -1,10 +1,10 @@
 #include "defines.h"
 
-extern void start(void);/* �X�^�[�g�E�A�b�v */
+extern void start(void);/* スタート・アップ */
 
 /*
- * �����݃x�N�^�̐ݒ�D
- * �����J�E�X�N���v�g�̒�`�ɂ��C�擪�Ԓn�ɔz�u�����D
+ * 割込みベクタの設定．
+ * リンカ・スクリプトの定義により，先頭番地に配置される．
  */
 void (*vectors[])(void) = {
 start , NULL,  NULL,  NULL,  NULL, NULL,  NULL,  NULL,

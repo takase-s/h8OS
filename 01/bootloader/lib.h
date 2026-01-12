@@ -11,6 +11,6 @@ int strncmp(const char *s1, const char *s2, int len);
 
 int putc(char c);  /* one character sending */
 int puts(char *str);  /* string sending*/
-int putxval(unsigned long value, int column); /* ”’l‚Ì16i•\¦ */
+int putxval(unsigned long value, int column); /* æ•°å€¤ã®16é€²è¡¨ç¤º */
 
 #endif 
