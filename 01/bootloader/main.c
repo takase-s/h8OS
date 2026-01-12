@@ -7,17 +7,17 @@ static void printval(void);
 
 static int init(void)
 {
-  /* ˆÈ‰º‚ÍƒŠƒ“ƒJEƒXƒNƒŠƒvƒg‚Å’è‹`‚µ‚Ä‚ ‚éƒVƒ“ƒ{ƒ‹ */
+  /* ä»¥ä¸‹ã¯ãƒªãƒ³ã‚«ãƒ»ã‚¹ã‚¯ãƒªãƒ—ãƒˆã§å®šç¾©ã—ã¦ã‚ã‚‹ã‚·ãƒ³ãƒœãƒ« */
   extern int erodata, data_start, edata, bss_start, ebss;
 
   /*
-   * ƒf[ƒ^—Ìˆæ‚ÆBSS—Ìˆæ‚ğ‰Šú‰»‚·‚éD‚±‚Ìˆ—ˆÈ~‚Å‚È‚¢‚ÆC
-   * ƒOƒ[ƒoƒ‹•Ï”‚ª‰Šú‰»‚³‚ê‚Ä‚¢‚È‚¢‚Ì‚Å’ˆÓD
+   * ãƒ‡ãƒ¼ã‚¿é ˜åŸŸã¨BSSé ˜åŸŸã‚’åˆæœŸåŒ–ã™ã‚‹ï¼ã“ã®å‡¦ç†ä»¥é™ã§ãªã„ã¨ï¼Œ
+   * ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ãŒåˆæœŸåŒ–ã•ã‚Œã¦ã„ãªã„ã®ã§æ³¨æ„ï¼
    */
   memcpy(&data_start, &erodata, (long)&edata - (long)&data_start);
   memset(&bss_start, 0, (long)&ebss - (long)&bss_start);
 
-  /* ƒVƒŠƒAƒ‹‚Ì‰Šú‰» */
+  /* ã‚·ãƒªã‚¢ãƒ«ã®åˆæœŸåŒ– */
   serial_init(SERIAL_DEFAULT_DEVICE);
 
   return 0;

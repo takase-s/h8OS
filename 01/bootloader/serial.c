@@ -53,38 +53,38 @@ static struct {
   { H8_3069F_SCI2 }, 
 };
 
-/* ƒfƒoƒCƒX‰Šú‰» */
+/* ãƒ‡ãƒã‚¤ã‚¹åˆæœŸåŒ– */
 int serial_init(int index)
 {
 	volatile struct h8_3069f_sci *sci = regs[index].sci;
 
 	sci->scr = 0;
 	sci->smr = 0;
-	sci->brr = 64; /* 20MHz‚ÌƒNƒƒbƒN‚©‚ç9600bps‚ð¶¬(25MHz‚Ìê‡‚Í80‚É‚·‚é) */
-	sci->scr = H8_3069F_SCI_SCR_RE | H8_3069F_SCI_SCR_TE; /* ‘—ŽóM‰Â”\ */
+  sci->brr = 64; /* 20MHzã®ã‚¯ãƒ­ãƒƒã‚¯ã‹ã‚‰9600bpsã‚’ç”Ÿæˆ(25MHzã®å ´åˆã¯80ã«ã™ã‚‹) */
+  sci->scr = H8_3069F_SCI_SCR_RE | H8_3069F_SCI_SCR_TE; /* é€å—ä¿¡å¯èƒ½ */
 	sci->ssr = 0;
 
 	return 0;
 }
 
-/* ‘—M‰Â”\‚©H */
+/* é€ä¿¡å¯èƒ½ã‹ï¼Ÿ */
 int serial_is_send_enable(int index)
 {
 	volatile struct h8_3069f_sci *sci = regs[index].sci;
   	return (sci->ssr & H8_3069F_SCI_SSR_TDRE);
 }
 
-/* ‚P•¶Žš‘—M */
+/* ï¼‘æ–‡å­—é€ä¿¡ */
 int serial_send_byte(int index, unsigned char c)
 {
 	volatile struct h8_3069f_sci *sci = regs[index].sci;
 
-  	/* ‘—M‰Â”\‚É‚È‚é‚Ü‚Å‘Ò‚Â */
+  /* é€ä¿¡å¯èƒ½ã«ãªã‚‹ã¾ã§å¾…ã¤ */
   	while (!serial_is_send_enable(index))
     {
     }
   	sci->tdr = c;
-  	sci->ssr &= ~H8_3069F_SCI_SSR_TDRE; /* ‘—MŠJŽn */
+  	sci->ssr &= ~H8_3069F_SCI_SSR_TDRE; /* ???M?J?n */
 
 	return 0;
 }
