@@ -2,6 +2,9 @@
 #include "serial.h"
 #include "lib.h"
 
+static int init(void);
+static void printval(void);
+
 static int init(void)
 {
   /* 以下はリンカ・スクリプトで定義してあるシンボル */
@@ -37,7 +40,7 @@ int main(void)
 {
 	serial_init(SERIAL_DEFAULT_DEVICE);
 
-	puts( ( (unsigned char *  ) "Hello World!\n") );
+	puts( "Hello World!\n" );
   	putxval(0x10, 0);   puts("\n");
   	putxval(0xffff, 0); puts("\n");	
 
