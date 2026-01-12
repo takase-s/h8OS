@@ -34,10 +34,6 @@ SECTIONS
 		_erodata = . ;
 	} > rom
 
-	.buffer : {
-		_buffer_start = . ;
-	} > buffer
-
 	.data : {
 		_data_start = . ;
 		*(.data)
