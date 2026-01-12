@@ -2,13 +2,17 @@
 #include "serial.h"
 #include "lib.h"
 
+volatile int value = 10;
+
 int main(void)
 {
+
 	serial_init(SERIAL_DEFAULT_DEVICE);
 
-	puts( ( (unsigned char *  ) "Hello World!\n") );
-  	putxval(0x10, 0);   puts("\n");
-  	putxval(0xffff, 0); puts("\n");	
+	puts( "Hello World!\n" );
+  	puts("0x"); putxval(value, 0);   puts("\n");
+  	value = 20;
+	puts("0x"); putxval(value, 0); puts("\n");
 
 	while(1)
 	{
