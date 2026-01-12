@@ -75,9 +75,9 @@ int strncmp(const char *s1, const char *s2, int len)
 /* １文字送信 */
 int putc(char c)
 {
-	if('¥n'== c)
+	if('\n'== c)
 	{
-		serial_send_byte(SERIAL_DEFAULT_DEVICE , '¥r');
+		serial_send_byte(SERIAL_DEFAULT_DEVICE , '\r');
 	}
 	else
 	{
@@ -106,7 +106,7 @@ int puts(char *str)
 }
 
 /* 文字列受信 */
-int gets(unsigned char *buf)
+int gets(char *buf)
 {
   int i = 0;
   unsigned char c;
@@ -126,7 +126,7 @@ int putxval(unsigned long value, int column)
   char *p;
 
   p = buf + sizeof(buf) - 1;
-  *(p--) = '¥0';
+  *(p--) = '\0';
 
   if (!value && !column)
     column++;
