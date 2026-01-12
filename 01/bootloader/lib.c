@@ -73,7 +73,7 @@ int strncmp(const char *s1, const char *s2, int len)
 }
 
 /* ‚P•¶š‘—M */
-int putc(unsigned char c)
+int putc(char c)
 {
 	if('\n'== c)
 	{
@@ -86,7 +86,7 @@ int putc(unsigned char c)
 
 }
 
-int puts(unsigned char *str)
+int puts(char *str)
 {
 	while(*str)
 	{
